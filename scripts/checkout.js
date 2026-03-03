@@ -166,9 +166,9 @@ function renderOrderSummary() {
     .forEach((link) => {
       const productId = link.dataset.productId;
 
-      // Add keydown event to input
-
       const inputQuantityElement = document.querySelector(`.js-quantity-input-${productId}`);
+
+      // Add keydown event to input
 
       inputQuantityElement.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
