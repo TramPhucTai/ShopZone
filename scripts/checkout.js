@@ -138,36 +138,50 @@ document.querySelectorAll('.js-update-link')
 
 document.querySelectorAll('.js-save-link')
   .forEach((link) => {
-    link.addEventListener('click', () => {
-      const productId = link.dataset.productId;
+    const productId = link.dataset.productId;
 
-      const container = document.querySelector(`.js-cart-item-container-${productId}`);
+    // Add keydown event to input
 
-      container.classList.remove('is-editing-quantity');
+    const inputQuantityElement = document.querySelector(`.js-quantity-input-${productId}`);
 
-      const inputQuantityElement = document.querySelector(`.js-quantity-input-${productId}`);
-
-      let newQuantity = Number(inputQuantityElement.value);
-
-      if (newQuantity <= 0) {
-        newQuantity = 1;
-      } else if (newQuantity >= 100) {
-        newQuantity = 99;
+    inputQuantityElement.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        saveQuantity(productId, inputQuantityElement);
       }
+    });
 
-      // export function updateQuantity(productId, newQuantity) {
-  
-      // }
-      updateQuantity(productId, newQuantity);
+    // Add click event to save button
 
-      // Update quantity of product in HTML
-      const quantityLabelElement = document.querySelector(`.js-quantity-label-${productId}`);
-
-      quantityLabelElement.innerHTML = `${newQuantity}`;
-
-      updateCartQuantity();
+    link.addEventListener('click', () => {
+      saveQuantity(productId, inputQuantityElement);
     })
   });
+
+function saveQuantity(productId, inputQuantityElement) {
+  const container = document.querySelector(`.js-cart-item-container-${productId}`);
+
+  container.classList.remove('is-editing-quantity');
+
+  let newQuantity = Number(inputQuantityElement.value);
+
+  if (newQuantity <= 0) {
+    newQuantity = 1;
+  } else if (newQuantity >= 100) {
+    newQuantity = 99;
+  }
+
+  // export function updateQuantity(productId, newQuantity) {
+
+  // }
+  updateQuantity(productId, newQuantity);
+
+  // Update quantity of product in HTML
+  const quantityLabelElement = document.querySelector(`.js-quantity-label-${productId}`);
+
+  quantityLabelElement.innerHTML = `${newQuantity}`;
+
+  updateCartQuantity();
+}
 
 function updateCartQuantity() {
   document.querySelector('.js-checkout-quantity').innerHTML = `${calculateCartQuantity()} items`;
