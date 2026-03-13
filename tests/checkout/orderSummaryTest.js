@@ -47,9 +47,25 @@ describe('Test suite: renderOrderSummary', () => {
       document.querySelector(`.js-product-quantity-${productId2}`).innerText
     ).toContain('Quantity: 1');
 
-    // Delete HTML after testing
+    // Exercise 16g - Check if the product name is displayed correctly
 
-    document.querySelector('.js-test-container').innerHTML = ``;
+    expect(
+      document.querySelector(`.js-product-name-${productId1}`).innerText
+    ).toEqual('Black and Gray Athletic Cotton Socks - 6 Pairs');
+
+    expect(
+      document.querySelector(`.js-product-name-${productId2}`).innerText
+    ).toEqual('Intermediate Size Basketball');
+
+    // Exercise 16h - Check if the product prices are displayed correctly
+
+    expect(
+      document.querySelector(`.js-product-price-${productId1}`).innerText
+    ).toEqual('$10.90');
+
+    expect(
+      document.querySelector(`.js-product-price-${productId2}`).innerText
+    ).toEqual('$20.95');
 
   });
 
@@ -73,9 +89,48 @@ describe('Test suite: renderOrderSummary', () => {
     expect(cart.length).toEqual(1);
     expect(cart[0].productId).toEqual(productId2);
 
-    // Delete HTML after testing
+    // Exercise 16g - Check if the product name is displayed correctly
 
+    expect(
+      document.querySelector(`.js-product-name-${productId2}`).innerText
+    ).toEqual('Intermediate Size Basketball');
+
+    // Exercise 16h - Check if the product prices are displayed correctly
+
+    expect(
+      document.querySelector(`.js-product-price-${productId2}`).innerText
+    ).toEqual('$20.95');
+
+  })
+
+  // Exercise 16j - Create a test for updating the delivery option
+
+  it('Updates the delivery option', () => {
+    // Get the 3rd delivery option for the 1st product and click it
+    document.querySelector(`.js-delivery-option-${productId1}-3`).click();
+
+    // Get the input inside the 3rd delivery option
+    expect(
+      document.querySelector(`.js-delivery-option-input-${productId1}-3`).checked
+    ).toEqual(true);
+
+    expect(cart.length).toEqual(2);
+    expect(cart[0].productId).toEqual(productId1);
+    expect(cart[0].deliveryOptionId).toEqual('3');
+
+    expect(
+      document.querySelector('.js-payment-summary-shipping').innerText
+    ).toEqual('$14.98');
+    expect(
+      document.querySelector('.js-payment-summary-total').innerText
+    ).toEqual('$63.50');
+
+    
+  })
+
+  // Delete HTML after testing
+
+  afterEach(() => {
     document.querySelector('.js-test-container').innerHTML = ``;
-
   })
 });
