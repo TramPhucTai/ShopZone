@@ -724,3 +724,36 @@ export const products = [
   }
   return new Product(productDetails);
 });
+
+
+
+// Using Date class 
+
+// const date = new Date();
+// console.log(date);
+// console.log(date.toLocaleTimeString());
+
+
+
+// More about "this"
+
+// console.log(this);
+// const object2 = {
+//   a: 2,
+//   b: this.a
+// };
+
+// function logThis() {
+//   console.log(this);
+// }
+
+// logThis();
+// logThis.call('hello');
+
+// const object3 = {
+//   method: () => {
+//     console.log(this);
+//   }
+// };
+
+// object3.method();
