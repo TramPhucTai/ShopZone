@@ -26,15 +26,26 @@ import { loadCart } from "../data/cart.js";
 
 // The async code below is the same as the one being commented above
 async function loadPage() {
+  try {
+    // throw 'error1'; 
 
-  await loadProductsFetch()
+    await loadProductsFetch();
 
-  await new Promise((resolve) => {
-    loadCart(() => {
-      resolve('value2');
+    const value = await new Promise((resolve, reject) => {
+      // throw 'error2';
+
+      loadCart(() => {
+        // reject('error3');
+
+        resolve('value3');
+      });
     });
-  });
 
+  } catch (error) {
+    // Error handling
+    console.log('Unexpected error. Please try again later.');
+  }
+  
   renderOrderSummary();
   renderPaymentSummary();
   renderCheckoutHeader();
