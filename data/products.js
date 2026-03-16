@@ -12,7 +12,7 @@ export function getProduct(productId) {
   return matchingProduct;
 }
 
-class Product {
+export class Product {
   id;
   image;
   name;
@@ -40,7 +40,7 @@ class Product {
   }
 }
 
-class Clothing extends Product {
+export class Clothing extends Product {
   sizeChartLink;
 
   // If an empty class don't have a constructor, by default it will run the parents constructor
@@ -59,7 +59,7 @@ class Clothing extends Product {
   }
 }
 
-class Appliance extends Product {
+export class Appliance extends Product {
   instructionsLink;
   warrantyLink;
 
@@ -762,6 +762,7 @@ export const products = [
   }
   return new Product(productDetails);
 });
+
 
 
 
