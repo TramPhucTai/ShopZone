@@ -33,14 +33,16 @@ function renderProductsGrid() {
   filteredProducts.forEach((product) => {
     productHTML += `
   <div class="product-container">
-    <div class="product-image-container">
+    <a href="product.html?id=${product.id}" class="product-image-container">
       <img class="product-image"
         src="${product.image}">
-    </div>
+    </a>
 
-    <div class="product-name limit-text-to-2-lines">
-      ${product.name}
-    </div>
+    <a href="product.html?id=${product.id}" class="product-name-link">
+      <div class="product-name limit-text-to-2-lines">
+        ${product.name}
+      </div>
+    </a>
 
     <div class="product-rating-container">
       <img class="product-rating-stars"
