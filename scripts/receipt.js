@@ -1,31 +1,41 @@
 import { getOrder }
   from '../data/orders.js';
 
-import { getProduct }
-  from '../data/products.js';
+import {
+  getProduct,
+  loadProductsFetch
+} from '../data/products.js';
 
 import { formatCurrency }
   from './utils/money.js';
 
 const url = new URL(window.location.href);
 
-const orderId = url.searchParams.get('id');
+const orderId =
+  url.searchParams.get('id');
 
-const order = getOrder(orderId);
+async function loadPage() {
 
-if (!order) {
+  // LOAD PRODUCTS FIRST
+  await loadProductsFetch();
 
-  document.querySelector('.js-receipt-container')
-    .innerHTML = '<h2>Order not found.</h2>';
+  const order = getOrder(orderId);
 
-} else {
+  if (!order) {
 
-  renderReceipt();
+    document.querySelector('.js-receipt-container')
+      .innerHTML =
+      '<h2>Order not found.</h2>';
+
+    return;
+  }
+
+  renderReceipt(order);
 }
 
-console.log(order.products);
+loadPage();
 
-function renderReceipt() {
+function renderReceipt(order) {
 
   let productsHTML = '';
 
@@ -34,14 +44,17 @@ function renderReceipt() {
   order.products.forEach((productDetails) => {
 
     const product =
-      getProduct(productDetails.id);
+      getProduct(productDetails.productId);
+
+    console.log(product);
 
     if (!product) {
       return;
     }
 
     const subtotal =
-      product.priceCents * productDetails.quantity;
+      product.priceCents *
+      productDetails.quantity;
 
     totalCents += subtotal;
 
@@ -58,7 +71,8 @@ function renderReceipt() {
           </div>
 
           <div>
-            Quantity: ${productDetails.quantity}
+            Quantity:
+            ${productDetails.quantity}
           </div>
 
           <div>
@@ -79,7 +93,8 @@ function renderReceipt() {
 
   const taxCents = totalCents * 0.1;
 
-  const finalTotal = totalCents + taxCents;
+  const finalTotal =
+    totalCents + taxCents;
 
   document.querySelector('.js-receipt-container')
     .innerHTML =
@@ -114,7 +129,8 @@ function renderReceipt() {
 
           <div>
             <strong>Date:</strong>
-            ${new Date(order.createdAt).toLocaleString()}
+            ${new Date(order.createdAt)
+              .toLocaleString()}
           </div>
 
         </div>

@@ -97,7 +97,7 @@
 }
 
 .amazon-header-right-section {
-  width: 180px;
+  width: 250px;
   flex-shrink: 0;
   display: flex;
   justify-content: end;
@@ -114,8 +114,10 @@
 
 .orders-text {
   display: block;
+  height: 15px;
   font-size: 15px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .cart-link {
@@ -151,10 +153,14 @@
 
 
 .seller-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   color: white;
   text-decoration: none;
+  font-size: 13px;
 
-  padding: 8px 12px;
   border: 1px solid transparent;
 }
 
