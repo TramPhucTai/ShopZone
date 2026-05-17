@@ -1,0 +1,66 @@
+.receipt-page {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.back-link {
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+.receipt-card {
+  background-color: white;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+
+  padding: 30px;
+}
+
+.receipt-title {
+  font-size: 28px;
+  font-weight: bold;
+
+  margin-bottom: 20px;
+}
+
+.receipt-info {
+  margin-bottom: 25px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.receipt-products {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.receipt-product {
+  display: flex;
+  gap: 20px;
+
+  border-top: 1px solid #eee;
+
+  padding-top: 20px;
+}
+
+.receipt-product img {
+  width: 100px;
+  height: 100px;
+
+  object-fit: contain;
+}
+
+.receipt-total {
+  margin-top: 30px;
+
+  font-size: 24px;
+  font-weight: bold;
+}

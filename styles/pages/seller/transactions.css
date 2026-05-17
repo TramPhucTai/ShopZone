@@ -1,0 +1,21 @@
+.dashboard-main {
+  flex: 1;
+  padding: 30px;
+  background-color: #f5f5f5;
+  margin-left: 250px;
+}
+
+.transactions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.transaction-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: space-between;
+}

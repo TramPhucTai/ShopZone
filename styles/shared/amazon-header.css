@@ -39,7 +39,7 @@
 }
 
 .amazon-logo {
-  width: 100px;
+  width: 160px;
   margin-top: 5px;
 }
 
@@ -136,7 +136,7 @@
 }
 
 .cart-quantity {
-  color: rgb(240, 136, 4);
+  color: #f08804;
   font-size: 16px;
   font-weight: 700;
 
@@ -146,4 +146,18 @@
   
   width: 26px;
   text-align: center;
+}
+
+
+
+.seller-link {
+  color: white;
+  text-decoration: none;
+
+  padding: 8px 12px;
+  border: 1px solid transparent;
+}
+
+.seller-link:hover {
+  border: 1px solid white;
 }

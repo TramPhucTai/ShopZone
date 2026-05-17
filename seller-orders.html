@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Seller Orders</title>
+
+  <link rel="stylesheet" href="styles/pages/seller/sidebar.css">
+  <link rel="stylesheet" href="styles/pages/seller/orders.css">
+</head>
+
+<body>
+
+  <div class="dashboard-layout">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <a href="amazon.html" class="storefront-link">
+        ← View Store
+      </a>
+
+      <div class="sidebar-title">
+        Seller Panel
+      </div>
+
+      <a href="seller.html" class="sidebar-link">
+        Dashboard
+      </a>
+
+      <a href="seller-products.html" class="sidebar-link">
+        Products
+      </a>
+
+      <a href="seller-orders.html" class="sidebar-link">
+        Orders
+      </a>
+
+      <a href="seller-transactions.html" class="sidebar-link">
+        Transactions
+      </a>
+
+      <button class="logout-button js-logout-button">
+        Logout
+      </button>
+
+    </div>
+
+    <!-- Main -->
+    <div class="dashboard-main">
+
+      <h1>Orders</h1>
+
+      <div class="orders-container js-orders-container">
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script type="module" src="scripts/auth/protectSellerPage.js">
+  </script>
+
+  <script type="module" src="scripts/auth/logout.js">
+  </script>
+
+  <script type="module" src="scripts/seller/orders.js"></script>
+
+</body>
+
+</html>

@@ -3,6 +3,7 @@ import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOption.js";
 import { formatCurrency } from "../utils/money.js";
 import { addOrder } from "../../data/orders.js";
+import { addTransaction } from '../../data/transactions.js';
 
 
 
@@ -82,6 +83,18 @@ export function renderPaymentSummary() {
 
         const order = await response.json();
         addOrder(order);
+
+        addTransaction({
+          id: crypto.randomUUID(),
+
+          amountCents: totalCents,
+
+          paymentMethod: 'Visa',
+
+          status: 'Completed',
+
+          createdAt: new Date().toISOString()
+        });
 
       } catch (error) {
         console.log('Unexpected error. Please try again later.')
