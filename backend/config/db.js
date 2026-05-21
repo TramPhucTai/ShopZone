@@ -1,0 +1,12 @@
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  host: process.env.RDS_HOST,
+  port: 5432,
+  database: process.env.RDS_DB,
+  user: process.env.RDS_USER,
+  password: process.env.RDS_PASSWORD,
+  ssl: { rejectUnauthorized: false }
+});
+
+module.exports = pool;

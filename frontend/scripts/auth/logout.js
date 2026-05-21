@@ -1,11 +1,6 @@
-import {
-  logoutSeller
-} from '../../data/session.js';
-
 document.querySelector('.js-logout-button')
   .addEventListener('click', () => {
-
-    logoutSeller();
-
+    localStorage.removeItem('token');
+    localStorage.removeItem('shopName');
     window.location.href = 'login.html';
   });
