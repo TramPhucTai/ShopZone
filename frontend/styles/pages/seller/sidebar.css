@@ -67,3 +67,8 @@ body {
 .logout-button:hover {
   opacity: 0.9;
 }
+.dashboard-main {
+  margin-left: 250px;
+  padding: 30px;
+  width: 100%;
+}

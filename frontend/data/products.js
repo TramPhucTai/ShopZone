@@ -88,19 +88,20 @@ export class Appliance extends Product {
 export let products = [];
 
 export function loadProductsFetch() {
-  const promise = fetch(
-    'https://supersimplebackend.dev/products'
+  return fetch(
+    'http://3.0.21.70:5000/api/products/all'
   ).then((response) => {
     return response.json();
   }).then((productsData) => {
     products = productsData.map((productDetails) => {
-      if (productDetails.type === 'clothing') {
-        return new Clothing(productDetails);
-      }
-      if (productDetails.type === 'appliance') {
-        return new Appliance(productDetails);
-      }
-      return new Product(productDetails);
+      return new Product({
+        id: productDetails.id,
+        name: productDetails.name,
+        image: productDetails.image || 'images/products/athletic-cotton-socks-6-pairs.jpg',
+        priceCents: productDetails.price,
+        rating: { stars: 4, count: 0 },
+        keywords: [productDetails.category || 'general']
+      });
     });
 
     console.log('Load products')
@@ -108,8 +109,6 @@ export function loadProductsFetch() {
     // Error handling
     console.log('Unexpected error. Please try again later.');
   }) */
-
-  return promise;
 }
 
 
@@ -123,13 +122,14 @@ export function loadProducts(func) {
 
   xhr.addEventListener('load', () => {
     products = JSON.parse(xhr.response).map((productDetails) => {
-      if (productDetails.type === 'clothing') {
-        return new Clothing(productDetails);
-      }
-      if (productDetails.type === 'appliance') {
-        return new Appliance(productDetails);
-      }
-      return new Product(productDetails);
+      return new Product({
+        id: productDetails.id,
+        name: productDetails.name,
+        image: productDetails.image || 'images/products/athletic-cotton-socks-6-pairs.jpg',
+        priceCents: productDetails.price,
+        rating: { stars: 4, count: 0 },
+        keywords: [productDetails.category || 'general']
+      });
     });
 
     console.log('Load products')
@@ -142,7 +142,8 @@ export function loadProducts(func) {
     console.log('Unexpected error. Please try again later.');
   })
 
-  xhr.open('GET', 'https://supersimplebackend.dev/products');
+  // xhr.open('GET', 'https://supersimplebackend.dev/products');
+  xhr.open('GET', 'http://3.0.21.70:5000/api/products/all');
   xhr.send();
 }
 
