@@ -1,5 +1,5 @@
 // Base URL — đổi thành EC2 public IP sau khi deploy
-export const API_BASE = 'http://3.0.21.70:5000/api';
+export const API_BASE = 'http://56.10.50.168:5000/api';
 
 export function getToken() {
   return localStorage.getItem('token');

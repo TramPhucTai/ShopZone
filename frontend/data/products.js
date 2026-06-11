@@ -89,7 +89,7 @@ export let products = [];
 
 export function loadProductsFetch() {
   return fetch(
-    'http://3.0.21.70:5000/api/products/all'
+    'http://56.10.50.168:5000/api/products/all'
   ).then((response) => {
     return response.json();
   }).then((productsData) => {
@@ -143,7 +143,7 @@ export function loadProducts(func) {
   })
 
   // xhr.open('GET', 'https://supersimplebackend.dev/products');
-  xhr.open('GET', 'http://3.0.21.70:5000/api/products/all');
+  xhr.open('GET', 'http://56.10.50.168:5000/api/products/all');
   xhr.send();
 }
 
